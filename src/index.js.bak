@@ -1,0 +1,93 @@
+import React, { useState } from "react";
+//import React from 'react';
+import ReactDOM from 'react-dom';
+import Mahalle from './Mahalle.js';
+
+	 function myFunc(v){
+		 if (v==="kirmizi"){
+			 return true;
+		 }
+		 return false;
+	 }
+
+const myelement=<h1> Hello Buket {myFunc("kırmızı") ? "kirmizi" : 7+8 }</h1>
+
+/*class Car extends React.Component{
+	render(){
+		return <h2>Hello buralar çok güzel</h2>;
+	}
+}*/
+/*const myelement = (
+  <div className="divClassName">
+    <p>I am a paragraph.</p>
+    <p>I am a paragraph too.</p>
+  </div>
+);*/
+
+
+function MyForm(){
+ const [name, setName]= useState("");
+ return (
+    <form>
+	<label>Enter your name:
+	<input type="text" value="name" onChange={(e) => setName(e.target.value)}/>
+	
+	</label>
+	</form>
+ )
+}
+//ReactDOM.render(<MyForm/>, document.getElementById("root"));
+//ReactDOM.render(<Mahalle c="kırmızı"/>, document.getElementById("root"));
+
+function Counter({initialCount}) {
+  const [count, setCount] = useState(initialCount);
+  return (
+    <>
+      Sayı: {count}<br/>
+      <button onClick={() => setCount(initialCount)}>Reset</button><br/>
+      <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
+      <button onClick={() => setCount(prevCount => parseInt(prevCount) + 1)}>+</button>
+    </>
+  );
+}
+//ReactDOM.render(<Counter initialCount="1"/>, document.getElementById("root"));
+
+function Form() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert('You clicked submit.');
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+class Toggle extends React.Component{
+  constructor(props){
+    super(props);
+	this.state = {isToogleOn: true};
+	this.handleClick=this.handleClick.bind(this);
+  }
+  handleClick(){
+    this.setState(prevState=> ({
+		isToogleOn: !prevState.isToogleOn
+	}));
+  }
+  render(){
+	  return(
+	  <button onClick={this.handleClick}>
+		  {this.state.isToogleOn ? "ON" : "OFF"}
+	  </button>
+	  )
+  }
+}
+ReactDOM.render(<Toggle/>, document.getElementById("root"));
+
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+//reportWebVitals();
