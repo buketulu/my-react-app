@@ -14,7 +14,19 @@ function findUser(username, callback) {
   });
 }
 
-findUser('john', console.log);
+//findUser('john', console.log);
+//{1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, …} 
+function f(n){
+  let sum=[1, 1];
+  for(let i=2;i<n;i++){
+    sum.push(sum[i-1]+sum[i-2]); 
+  }
+  console.log(n,sum);
+}
+f(5);
+
+
+
 //console.log(vowelArr);
 /* let count1=99;
 function attachEventListener(){
